@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+</head>
+<body>
+    <h1>Calculator</h1>
+    <input type="number" id="num1" placeholder="type first number" >
+    <input type="number" id="num2" placeholder="type second number">
+    <br><br>
+    <h2>Chose operation</h2>
+    <button onclick="setOperator('+')">"Add"</button>
+    <button onclick="setOperator('-')">"Subtract"</button>
+    <button onclick="setOperator('*')">"Multiply"</button>
+    <button onclick="setOperator('/')">"Divide"</button>
+
+    <button onclick="calculate()">"="</button>
+    <button onclick="clearCal()">"C"</button>
+
+    <h2 id="answer">result: </h2>
+
+    <script>
+        let operator = null;
+        function setOperator(op){
+            operator = op;
+            document.getElementById("answer").innerText = "Selected: " + operator;
+        }
+        function calculate(){
+            let num1 = parseFloat(document.getElementById("num1").value);
+            let num2 = parseFloat(document.getElementById("num2").value);
+            let res;
+
+            if(operator === '+'){
+                res = num1+num2;
+            }
+            else if(operator === '-'){
+                res = num1-num2;
+            }
+            else if(operator === '*'){
+                res = num1*num2;
+            }
+            else if(operator === '/'){
+                res = num1/num2;
+            }
+
+            document.getElementById("answer").innerText = "Result: " + res;
+        }
+
+        function clearCal(){
+            document.getElementById("num1").value = "";
+            document.getElementById("num2").value = "";
+            operator = null;
+            document.getElementById("answer").innerHTML = "Result: ";
+        }
+    </script>
+</body>
+
+</html>

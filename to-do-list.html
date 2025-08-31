@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do-List</title>
+</head>
+<body>
+    <input type="text"  placeholder="Enter Task" id="task">
+    <button onclick="addTask()">Add</button>
+    <ol id="list"></ol>
+
+    <script>
+        function addTask(){
+            let task = document.getElementById("task").value;
+            if(task.trim() !== ""){
+                let li = document.createElement("li");
+                li.innerText = task;
+                li.addEventListener("click", () => {
+                    li.remove();
+                });
+                // li.onclick = function(){li.remove();};
+                document.getElementById("list").appendChild(li);
+                document.getElementById("task").value = "";
+            }
+        }
+        
+    </script>
+
+</body>
+</html>
