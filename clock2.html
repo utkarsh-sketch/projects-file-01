@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+</head>
+<body>
+    <h1>Clock</h1>
+    <div id ="toTime"></div>
+    <div id="toDate"></div>
+    <script>
+        function addZero(n){
+            return n<10?"0"+n:n;
+        }
+        function getTime(date){
+            let h = date.getHours();
+            let m = addZero(date.getMinutes());
+            let s = addZero(date.getSeconds());
+            const session = h>=12?"PM":"AM";
+            if( h===0) h=12;
+            else if(h>12) h -=12;
+            h = addZero(h);
+            return `${h}:${m}:${s} ${session}`;
+        }
+        function getDate(date){
+            return date.toLocaleDateString(undefined, {
+            weekday: "long", year: "numeric", month: "long", day: "numeric"
+            });
+        }
+        function updateClock(){
+            let now = new Date();
+            document.getElementById("toTime").innerText = getTime(now);
+            document.getElementById("toDate").innerText = getDate(now);
+        }
+        // setInterval(updateClock,1000);
+        // updateClock();
+        updateClock();
+        const timerId = setInterval(updateClock, 1000);
+        
+    </script>
+</body>
+</html>
+
+<!-- •	Manual way (hours/minutes/seconds individually)
+✔ Full control (you can make custom formats like hh:mm without seconds, or add blinking effects).
+❌ More code. -->
