@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column; /* Arrange vertically */
+            background: #212121;
+            color: #fff;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }.boxes {
+            display: flex; 
+            gap: 1rem; /* space between boxes */
+            margin: 1rem 0;
+        }
+        .box{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100px;
+            width: 100px;
+            margin: 0 10px;
+            border: 2px solid #fff;
+            border-radius: 0.5rem;
+            text-transform: capitalize;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .box:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+        }
+        #boxx{
+            background-color: #fff;
+            border-radius: 0.5rem;
+            text-align: center;
+            color: #212121;
+            padding: 0.5rem;
+            text-transform: capitalize;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        #boxx:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+        }
+        h2{
+            text-align: center;
+            max-width: 600px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Color Scheme Switcher</h1>
+    <div class="boxes">
+        <div class="box" id="box1" style="background-color: black;">black</div>
+        <div class="box" id="box2" style="background-color: blue;">blue</div>
+        <div class="box" id="box3" style="background-color: red;">red</div>
+        <div class="box" id="box4" style="background-color: green;">green</div>
+    </div>
+    <div class="boxes" id="boxx">Remove</div>
+    <h2>Try clicking on one of the color above to change the background color of this page!</h2>
+</body>
+<script>
+    const boxes = document.querySelectorAll('.box');
+    const body = document.querySelector('body');
+    const Remove = document.querySelector('#boxx');
+    Remove.addEventListener('click',()=>{
+        body.style.backgroundColor = '#212121';
+    })
+
+    boxes.forEach(b => {
+        b.addEventListener('click' , ()=>{
+            const color = b.style.backgroundColor;
+            body.style.backgroundColor = color;
+        });
+    }); 
+</script>
+</html>
